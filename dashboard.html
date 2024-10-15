@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0e0e0;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Dashboard</h1>
+    <p id="displayInput"></p>
+</div>
+
+<script>
+    window.onload = function() {
+        const storedInput = localStorage.getItem('userInput');
+        if (storedInput) {
+            document.getElementById('displayInput').textContent = "You entered: " + storedInput;
+        } else {
+            document.getElementById('displayInput').textContent = "No input found!";
+        }
+    };
+</script>
+
+</body>
+</html>
