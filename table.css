@@ -1,0 +1,123 @@
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #121212; 
+        color: white; 
+    }
+
+    .small-title {
+        font-size: 0.75em; 
+        margin-top: 5px; 
+        font-weight: normal; 
+        color: #bbbbbb; 
+        text-align: left;
+    }
+
+    .table-container {
+        width: 100%; 
+        max-width: 1200px; 
+        margin: 10px auto; 
+        border-radius: 8px; 
+        overflow: hidden; 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); 
+        background-color: #1f1f1f; 
+    }
+
+    .table-header {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        background-color: #2b2b2b; 
+        color: white; 
+        padding: 10px; 
+        border-bottom: 1px solid #2c2c2c; 
+    }
+
+    .header-cell {
+        font-weight: bold;
+        text-align: left;
+        padding: 8px; 
+        font-size: 0.9em; 
+        color: white; 
+    }
+
+    .table-row {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        background: #1f1f1f; 
+        border-bottom: 1px solid #2c2c2c; 
+        padding: 8px; 
+        transition: background-color 0.3s ease;
+    }
+
+    .table-row:hover {
+        background-color: #03116999; 
+    }
+
+    .table-cell {
+        padding: 8px; 
+        text-align: left;
+        border-bottom: 1px solid #00123d; 
+        font-size: 0.85em;
+        color: white; 
+    }
+
+    .table-cell-highlight {
+        text-align: center;
+        background-color: #4c5572;
+        padding: 4px 8px;
+        border-radius: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #dbeadd;
+    }
+
+    .red, .blue, .yellow, .green {
+        text-align: center;
+        padding: 4px 8px;
+        border-radius: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .red { background-color: #f79f9f; }
+    .blue { background-color: #89a6ff; }
+    .yellow { background-color: #92e98a; }
+    .green { background-color: #1cc953; }
+
+    .table-cell:last-child {
+        border-right: none; 
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        .table-header, .table-row {
+            grid-template-columns: repeat(2, 1fr); 
+        }
+
+        .header-cell, .table-cell {
+            font-size: 0.75em; 
+        }
+
+        .card-container {
+            flex-direction: column; 
+        }
+
+        .card {
+            margin-bottom: 10px; 
+        }
+    }
+
+    .fillout-container {
+        display: none; 
+        justify-content: center; 
+        align-items: center; 
+        height: 10vh; 
+    }
+
+    .fillout-container div {
+        margin: auto; 
+    }
+</style>

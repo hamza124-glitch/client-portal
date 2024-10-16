@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #1c1b2d;
+            color: #fff;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #28274a;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h2 {
+            padding-left: 20px;
+            padding-top: 20px;
+            text-align: left;
+            margin-bottom: 20px;
+            color: #ffff;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-bottom: 200px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #bb86fc;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+        }
+
+        .main-content h1 {
+            margin-bottom: 20px;
+        }
+
+        /* Button hover animation */
+        .sidebar ul li a:hover {
+            transform: scale(1.05);
+            background-color: #4e47c5;
+        }
+
+        /* Animation for content transitions */
+        .content-section {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Audio Protect</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="catalog.html">Catalog</a></li>
+            <li><a href="panel.html">Control Panel</a></li>
+            <li><a href="claims.html">Copyright Claims</a></li>
+            <li><a href="ugc.html">UGC Reports</a></li>
+            <li><a href="payout.html">Payout Settings</a></li>
+            <li><a href="hc.html"">Help Center</a></li>
+        </ul>
+    </div>
+</body>
+</html>

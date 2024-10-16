@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Catalog</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: max;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Full Catalog</h1>
+        <table id="dataContainer"></table>
+    </div>
+
+    <script>
+        // Constants for API key and Spreadsheet ID
+        const API_KEY = 'AIzaSyBQy-IDtj9ayNwLGcR2P9NJAYrdwlcPJCk'; // Your API Key
+        const SPREADSHEET_ID = '1PxMMRlODjwjIneraH0ayXEtjo-rjGA-fk4K0qF7XSno'; // Your Spreadsheet ID
+
+        // Get the SHEET_NAME from localStorage using the 'loginKey' ID
+        const SHEET_NAME = localStorage.getItem('username') || 'defaultSheetName'; // Use a default name if loginKey is not found
+
+        // Function to render the table with all data
+        function renderTable(values) {
+            const dataContainer = document.getElementById('dataContainer');
+            dataContainer.innerHTML = ''; // Clear existing content
+
+            // Build the header row
+            const headerRow = `
+                <tr>
+                    <th>Track ID</th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th>Record Label</th>
+                    <th>Songwriter</th>
+                    <th>Release Date</th>
+                    <th>Status</th>
+                </tr>
+            `;
+            dataContainer.innerHTML += headerRow;
+
+            // Loop through the rows and create table rows
+            values.forEach(row => {
+                const tableRow = `
+                    <tr>
+                        <td>${row[0] || 'N/A'}</td>
+                        <td>${row[1] || 'N/A'}</td>
+                        <td>${row[2] || 'N/A'}</td>
+                        <td>${row[3] || 'N/A'}</td>
+                        <td>${row[4] || 'N/A'}</td>
+                        <td>${row[5] || 'N/A'}</td>
+                        <td>${row[6] || 'N/A'}</td>
+                        <td><span class="${row[7] === 'Removed' ? 'red' : row[7] === 'In Review' ? 'blue' : row[7] === 'In Progress' ? 'yellow' : row[7] === 'Copyrighted' ? 'green' : ''}">${row[7] || 'N/A'}</span></td>
+                    </tr>
+                `;
+                dataContainer.innerHTML += tableRow; // Append the row to the data container
+            });
+        }
+
+        // Fetching data from the Google Sheets API
+        fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`)
+            .then(response => response.json())
+            .then(data => {
+                const values = data.values || []; // Access the values from the response
+
+                // Remove the first row if it contains headers
+                if (values.length > 0) {
+                    values.shift(); // Remove the first row
+                }
+
+                // Filter out rows with "#N/A"
+                const filteredValues = values.filter(row => !row.some(cell => cell === '#N/A'));
+
+                // Render all data without pagination
+                renderTable(filteredValues);
+            })
+            .catch(error => console.error('Error fetching data:', error)); // Log any errors that occur during the fetch
+    </script>
+</body>
+</html>
