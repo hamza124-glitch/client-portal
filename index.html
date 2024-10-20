@@ -4,24 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
     <script>
         // Automatic redirect on page load
         window.onload = function() {
             setTimeout(function() {
                 window.location.href = "https://audioprotect.glitch.me/";
-            }, 3000); // 3 second delay to show the message before redirecting
+            }, 3000); // 3 second delay
         };
 
-        // Function to manually redirect
+        // Function for manual redirect
         function manualRedirect() {
             window.location.href = "https://audioprotect.glitch.me/";
         }
     </script>
 </head>
 <body>
-    <p>Redirecting to Login Portal... If it doesn't work, click the button below:</p>
+    <div class="container">
+        <p>Redirecting to Login Portal... If it doesn't work, click the button below:</p>
 
-    <!-- Button for manual redirect -->
-    <button onclick="manualRedirect()">Click here</button>
+        <!-- Button for manual redirect -->
+        <button onclick="manualRedirect()">Click here</button>
+    </div>
 </body>
 </html>
